@@ -106,5 +106,4 @@
     h. Built in Libraries
         1. Math 
         2. String Manipulation
-        3. Table Implementation
-
+        3. Table Manipulation
