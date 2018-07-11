@@ -1,0 +1,110 @@
+1. Variables
+    a. Basic Types
+        1. String
+        2. Number
+        3. Boolean
+        4. null/nil
+        5. Table
+    b. Dynamic Typing
+        1. Reassign variable to different type on the fly
+    c. Coercion
+        1. Automatic Conversion between String and Numbers
+            A. Math operators on string convert the string to numbers
+            B. Numbers converted to strings when string is expected in a statement
+
+2. Syntax
+    a. Language Keywords
+        1. and
+        2. break
+        3. do
+        4. else
+        5. elseif
+        6. end
+        7. false
+        8. for
+        9. function
+        10. if
+        11. in
+        12. local
+        13. nil
+        14. not
+        15. or
+        16. repeat
+        17. return
+        18. then
+        19. true
+        20. until
+        21. while
+    b. Operators
+        1. Arithmetic
+        2. Relational
+        3. Logical
+        4. Concatination
+        5. Length
+    c. Literal Strings
+        1. C-like Escape Sequences
+    d. Numerical Constants
+        1. Hexadecimal Numbers
+        2. Floating Points
+            A. Using decimal Points
+            B. Using e or E for Scientific Notation
+    e. Comments
+        1. Single Line
+        2. Multiple Line
+
+3. Statements
+    a. Chunks and Blocks
+    c. Assignment
+        1. variable list = expression list
+    b. Loops
+        1. While
+            A. while exp do block end
+        2. For 
+            A. for <variable> = exp1 , exp2 [ , exp3] do block end
+        3. Repeat
+            A. repeat block until exp
+    c. If Statements
+        1. If
+            A. if exp then block end
+        2. If else
+            A. if exp then block else block end
+        3. If elseif else
+            A. if exp then block elseif exp then block ... else block end
+        
+4. Tables
+    a. Constructor
+    b. Array vs Table
+    c. Keys and Values
+    d. Basic operations on Tables
+
+5. Functions
+    a. Function declaration
+        1. Function Syntax 
+        2. Setting return values
+        3. Setting parameters
+    b. Function Calls
+
+6. Scope
+    a. Local vs Glocal
+        1. Functions
+        2. Variables
+    b. Block Scope within Loops and If Statements
+    
+7. Basic Object Oriented Design
+    a. How to set fields/data members for objects
+    b. How to set methods for objects
+    c. How to instantiate a lua object
+
+8. Other potential subjects
+    a. Coroutines
+    b. Closures
+    c. Metatables
+    d. How lua is integrated in C/C++ programs
+    e. Error Handling
+    f. Input/Output
+    g. luaRocks
+    h. Built in Libraries
+        1. Math 
+        2. String Manipulation
+        3. Table Implementation
+
