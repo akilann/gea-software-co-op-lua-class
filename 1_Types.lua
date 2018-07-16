@@ -1,5 +1,5 @@
 -- Main variable types
-null
+null = nil
 boolean = false
 number = 0
 string = "a"
