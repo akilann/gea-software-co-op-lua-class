@@ -18,6 +18,7 @@ do
   -- Local variable takes precedence over global variable with same name
   local x = 21
   y = 22
+
   io.read()
 
   print("x is now: " .. x) -- x is now: 21
@@ -122,19 +123,21 @@ print("\nwhile loop")
   Lua: while condition do end
 ]]
 
-local iterate_loop = true
 local foo = ""
-while #foo < 5 do
+while #foo <= 5 do
   foo = foo .. "ha"
 end
 print(foo) -- hahaha
+
+local bar = ""
+repeat
+  io.write("ha")
+until true -- ha
 
 io.read()
 print("\nif/elseif/else")
 
 for i = 1,3 do
-
-  -- if/elseif/else
   io.write("The wheels on the orphan bus... ")
 
   local input = io.read()
@@ -146,5 +149,12 @@ for i = 1,3 do
   else
     print("The bus crashes and burns.")
   end
-
 end
+--[[
+The wheels on the orphan bus... go round and round
+The bus safely makes it to the orphanage.
+The wheels on the orphan bus... come to a stop
+The bus stops to pick up more lost orphans.
+The wheels on the orphan bus... fall off
+The bus crashes and burns.
+]]
