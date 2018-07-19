@@ -2,54 +2,96 @@ local inspect = require "inspect".inspect
 
 local empty_table = {}
 local array = { 1, 2, 3, 4, "apple" }
-local keyed_table = { a = 1, b = 2, giraffe = 'yes', "leaves" }
+local keyed_table = { a = 1, b = 2, giraffe = true, "leaves" }
 local mixed_table = { alpha = "a", beta = "b", "c", "d", "e", "f", gamma = "g"}
 local tableception = { keyed_table, array, empty_table }
 
-io.read()
-print(inspect(empty_table))
-io.read()
-print(inspect(array))
-io.read()
-print(inspect(keyed_table))
-io.read()
-print(inspect(tableception))
-
--- Empty Table
-io.read()
-print(inspect(empty_table))
-
-io.read()
-table.insert(empty_table, 1)
-print(inspect(empty_table))
-table.insert(empty_table, 3)
-print(inspect(empty_table))
-table.insert(empty_table, 2, 2)
-print(inspect(empty_table))
-table.insert(empty_table, 3, "orange")
-print(inspect(empty_table))
-
 -- Array
 io.read()
+print("Arrays")
+print(inspect(array)) -- { 1, 2, 3, 4, "apple" }
+
+io.read()
 table.remove(array, 4)
-print(inspect(array))
-print(array[4])
+print(inspect(array)) -- { 1, 2, 3, "apple" }
+
+io.read()
+print(array[4]) -- apple
+
 io.read()
 array[1] = nil
 print(inspect(array))
+--[[
+{
+  [2] = 2,
+  [3] = 3,
+  [4] = "apple"
+}
+]]
+
+-- Tables
+io.read()
+print("empty_table")
+print(inspect(empty_table)) -- {}
+
+io.read()
+table.insert(empty_table, 1)
+print(inspect(empty_table)) -- { 1 }
+
+io.read()
+table.insert(empty_table, 3)
+print(inspect(empty_table)) -- { 1, 3 }
+
+io.read()
+table.insert(empty_table, 2, 2) -- { 1, 2, 3 }
+print(inspect(empty_table))
+
+io.read()
+table.insert(empty_table, 3, "orange")
+print(inspect(empty_table)) -- { 1, 2, "orange", 3 }
 
 -- Keyed Table
+io.read()
+print("Keyed table")
+print(inspect(keyed_table))
+--[[
+{
+  [1] = "leaves",
+  a = 1,
+  b = 2,
+  giraffe = true
+}
+]]
+
 io.read()
 keyed_table["key"] = "lock"
 keyed_table.unlock = "Alohamora"
 keyed_table["giraffe"] = nil
 print(inspect(keyed_table))
+--[[
+{
+  [1] = "leaves",
+  a = 1,
+  b = 2,
+  key = "lock"
+  unlock = "Alohamora"
+}
+]]
+
+
+local key = "unlock"
 io.read()
-print(keyed_table["ghost"])
+print("local key = \"unlock\"")
+print("[key]: " .. keyed_table[key]) -- [key]: Alohamora
+print(".key: " .. keyed_table.key) -- .key: key
+io.write(".ghost: ")
+print(keyed_table.ghost) -- .ghost: nil
 
 -- Mixed table
 io.read()
+print("Mixed table")
 print(inspect(mixed_table))
+
 io.read()
 -- c is thrown away since the array index that it is assigned to is overwritten by the preceding array entries
 mixed_table = { alpha = "a", beta = "b", [1] = "c", "d", "e", "f", gamma = "g"}
