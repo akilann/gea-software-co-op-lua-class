@@ -39,7 +39,7 @@
         1. Arithmetic
         2. Relational
         3. Logical
-        4. Concatination
+        4. Concatenation
         5. Length
     c. Literal Strings
         1. C-like Escape Sequences
@@ -59,7 +59,7 @@
     b. Loops
         1. While
             A. while exp do block end
-        2. For 
+        2. For
             A. for <variable> = exp1 , exp2 [ , exp3] do block end
         3. Repeat
             A. repeat block until exp
@@ -70,7 +70,7 @@
             A. if exp then block else block end
         3. If elseif else
             A. if exp then block elseif exp then block ... else block end
-        
+
 4. Tables
     a. Constructor
     b. Array vs Table
@@ -79,17 +79,17 @@
 
 5. Functions
     a. Function declaration
-        1. Function Syntax 
+        1. Function Syntax
         2. Setting return values
         3. Setting parameters
     b. Function Calls
 
 6. Scope
-    a. Local vs Glocal
+    a. Local vs Global
         1. Functions
         2. Variables
     b. Block Scope within Loops and If Statements
-    
+
 7. Basic Object Oriented Design
     a. How to set fields/data members for objects
     b. How to set methods for objects
@@ -102,8 +102,8 @@
     d. How lua is integrated in C/C++ programs
     e. Error Handling
     f. Input/Output
-    g. luaRocks
+    g. LuaRocks
     h. Built in Libraries
-        1. Math 
+        1. Math
         2. String Manipulation
         3. Table Manipulation
