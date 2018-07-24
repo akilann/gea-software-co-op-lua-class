@@ -1,5 +1,120 @@
+-- Closures
+print("Closure based classes")
+
+local function Fruit()
+  local self = {
+    _private = {
+      amount_left_pct = 100
+    }
+  }
+
+  function self.bite(amount_to_bite)
+    self._private.amount_left_pct = self._private.amount_left_pct - amount_to_bite
+  end
+
+  function self.shove_it_down()
+    self._private.amount_left_pct = 0
+  end
+
+  function self.throw_away()
+    if self._private.amount_left_pct < 10 then self._private.amount_left_pct = 0 end
+  end
+
+  function self.amount_left()
+    return self._private.amount_left_pct
+  end
+
+  function self.tostring()
+    return "Amount left: " .. self._private.amount_left_pct
+  end
+
+  return self
+end
+
+local fruit = Fruit()
+
+io.read()
+print("Amount left: " .. fruit.amount_left())
+
+io.read()
+fruit.bite(10)
+print("Amount left: " .. fruit.amount_left())
+
+io.read()
+fruit.bite(50)
+print("Amount left: " .. fruit.amount_left())
+
+io.read()
+fruit.shove_it_down()
+print("Amount left: " .. fruit.amount_left())
+
+local function Apple(_color, _taste, _has_worm)
+  local self = Fruit()
+
+  self._private.color = _color or "red"
+  self._private.taste = _taste or "sweet"
+  self._private.has_worm = _has_worm or false
+  -- "red", "sweet", and false are used as default values
+
+  local super_throw_away = self.throw_away
+  function self.throw_away()
+    super_throw_away()
+    if self._private.amount_left_pct < 10 then
+      self._private.color = "brown"
+      self._private.taste = "disgusting"
+      self._private.has_worm = true
+    end
+  end
+
+  function self.color(_color)
+    self._private.color = _color or self._private.color
+    return self._private.color
+  end
+
+  function self.taste(_taste)
+    self._private.taste = _taste or self._private.taste
+    return self._private.taste
+  end
+
+  function self.has_worm(_has_worm)
+    self._private.has_worm = _has_worm or self._private.has_worm
+    return self._private.has_worm
+  end
+
+  local super_tostring = self.tostring
+  function self.tostring()
+    local str = super_tostring() .. "\n"
+    str = str .. "Color: " .. self._private.color .. "\n"
+    str = str .. "Taste: " .. self._private.taste .. "\n"
+    str = str .. "Has worm: " .. tostring(self._private.has_worm) .. "\n"
+
+    return str
+  end
+
+  return self
+end
+
+local closure_apple = Apple("green", "sour", false)
+
+io.read()
+print(closure_apple.tostring())
+
+closure_apple.color("green")
+closure_apple.taste("sour")
+closure_apple.has_worm(false)
+closure_apple.bite(95)
+
+io.read()
+print(closure_apple.tostring())
+
+closure_apple.throw_away()
+
+io.read()
+print(closure_apple.tostring())
+
 -- Metatables http://lua-users.org/wiki/MetatableEvents
 -- Basic Metatables
+io.read()
 print("Basic Metatables") -- TODO
 
 -- Basic Classes using Metatables
@@ -10,85 +125,39 @@ Fruit.__index = Fruit
 
 local Fruit_mt = {
   __call = function()
-    local food_instance = { amount_left_pct = 100 }
-    return setmetatable(food_instance, Fruit)
+    local self = {
+      _private = {
+        amount_left_pct = 100
+      }
+    }
+    return setmetatable(self, Fruit)
+  end,
+  __tostring = function(self)
+    print(require 'inspect'.inspect(self))
+    return ""
+    -- return "Amount left: " .. self._private.amount_left_pct
   end
 }
 
 setmetatable(Fruit, Fruit_mt)
 
 function Fruit:bite(amount_to_bite)
-  self.amount_left_pct = self.amount_left_pct - amount_to_bite
+  self._private.amount_left_pct = self._private.amount_left_pct - amount_to_bite
 end
 
 function Fruit:shove_it_down()
-  self.amount_left_pct = 0
+  self._private.amount_left_pct = 0
+end
+
+function Fruit:throw_away()
+  if self._private.amount_left_pct < 10 then self._private.amount_left_pct = 0 end
 end
 
 function Fruit:amount_left()
-  return self.amount_left_pct
+  return self._private.amount_left_pct
 end
 
-local apple = Fruit()
+local fruit = Fruit()
 
 io.read()
-print("Amount left: " .. apple:amount_left())
-
-io.read()
-apple:bite(10)
-print("Amount left: " .. apple:amount_left())
-
-io.read()
-apple:bite(50)
-print("Amount left: " .. apple:amount_left())
-
-io.read()
-apple:shove_it_down()
-print("Amount left: " .. apple:amount_left())
-
-local Apple = {}
-Apple.__index = Fruit -- Superclass (Base class)
-
-setmetatable(Apple, {
-  __call = function(cls, color, taste, has_worm)
-    print(require 'inspect'.inspect(cls))
-    local apple_instance = setmetatable({
-        _color = color,
-        _taste = taste,
-        _has_worm = false
-      },
-      cls)
-    return setmetatable(apple_instance, Apple)
-  end
-})
-
-function Apple:decompose()
-  if self.amount_left_pct > 10 then
-    self._color = "brown"
-    self._taste = "disgusting"
-    self._has_worm = true
-  end
-end
-
-function Apple:color(color)
-  self._color = color or self._color
-  return self._color
-end
-
-function Apple:taste(taste)
-  self._taste = taste or self._taste
-  return self._taste
-end
-
-function Apple:has_worm(has_worm)
-  self._has_worm = has_worm or self._has_worm
-  return self._has_worm
-end
-
-local apple1 = Apple("green", "sour", false)
-print(require 'inspect'.inspect(apple1))
-io.read()
--- print("Amount left: " .. apple1:amount_left())
-print("Color: " .. apple1:color())
-print("Taste: " .. apple1:taste())
-print("Has worm: " .. apple1:has_worm())
+print(require 'inspect'.insp8tostring(fruit))
