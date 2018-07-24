@@ -49,6 +49,12 @@ io.read()
 local notequal = falsey
 print("notequal: " .. tostring(true ~= notequal)) -- notequal: true
 
+io.read()
+local nil_check = nil or "hello"
+local nil_check2 = "goodbye" or "see ya later"
+print("nil_check: " .. nil_check)
+print("nil_check2: " .. nil_check2)
+
 -- For loops
 io.read()
 print("\nfor loop")
