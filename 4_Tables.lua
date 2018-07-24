@@ -66,15 +66,22 @@ print(inspect(keyed_table))
 io.read()
 keyed_table["key"] = "lock"
 keyed_table.unlock = "Alohamora"
+keyed_table._valid_key_123 = "I'm a valid key"
+local function_key = function() end
+keyed_table[function_key] = "I'm a function"
+keyed_table.imafunction = function() end
 keyed_table["giraffe"] = nil
 print(inspect(keyed_table))
 --[[
 {
   [1] = "leaves",
+  _valid_key_123 = "I'm a valid_key",
   a = 1,
   b = 2,
-  key = "lock"
-  unlock = "Alohamora"
+  imafunction = <function 1>,
+  key = "lock",
+  unlock = "Alohamora",
+  [<function 2>] = "I'm a function"
 }
 ]]
 
@@ -112,3 +119,53 @@ mixed_table = { alpha = "a", beta = "b", "c", "d", "e", "f", gamma = "g"}
 mixed_table[1] = "a"
 print(inspect(mixed_table))
 io.read()
+
+-- Iterating through arrays and tables
+io.read()
+print("Iteration")
+
+io.read()
+print("ipairs\n")
+
+io.read()
+print("empty_table: " .. inspect(empty_table))
+
+io.read()
+print("empty_table iteration\n")
+for i,v in ipairs(empty_table) do
+  print("index: " .. i .. " value: " .. v)
+end
+print("\nend empty_table iteration\n")
+
+io.read()
+print("array: " .. inspect(array))
+
+io.read()
+print("array iteration\n")
+for i,v in ipairs(array) do
+  print("index: " .. i .. " value: " .. v)
+end
+print("\nend array iteration\n")
+
+io.read()
+print("pairs")
+
+io.read()
+print("keyed_table: " .. inspect(empty_table))
+
+io.read()
+print("keyed_table iteration\n")
+for k,v in pairs(keyed_table) do
+  print_key_value(k,v)
+end
+print("\nend keyed_table iteration\n")
+
+io.read()
+print("array: " .. inspect(array))
+
+io.read()
+print("array iteration\n")
+for i,v in pairs(array) do
+  print("index: " .. i .. " value: " .. v)
+end
+print("\nend array iteration\n")
