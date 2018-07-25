@@ -63,14 +63,14 @@ print("------------------ Local vs. Global Functions ------------------")
 
 -- Example 1: Calling a local function outside of it's scope
 io.read()
-print("# Example 1: Calling a local function outside of it's scope #")
+print("# Example 1: Calling a local function outside of its scope #")
 io.read()
 
 do
     local function Subtract(numberOne, numberTwo)
         return numberOne - numberTwo
     end
- 
+
     print("Result of `Subtract` called within local scope: " .. Subtract(10, 5))
     print("Type of `Subtract` within local scope: " .. type(Subtract))
 end
