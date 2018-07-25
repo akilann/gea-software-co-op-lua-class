@@ -34,26 +34,30 @@ end
 local fruit = Fruit()
 
 io.read()
-print("Amount left: " .. fruit.amount_left())
+print(fruit.tostring())
 
 io.read()
 fruit.bite(10)
-print("Amount left: " .. fruit.amount_left())
+print(fruit.tostring())
 
 io.read()
 fruit.bite(50)
-print("Amount left: " .. fruit.amount_left())
+print(fruit.tostring())
 
 io.read()
 fruit.shove_it_down()
-print("Amount left: " .. fruit.amount_left())
+print(fruit.tostring())
 
-local function Apple(_color, _taste, _has_worm)
+-- Inheritance
+io.read()
+print("Inheritance")
+
+local function Apple(color, taste, has_worm)
   local self = Fruit()
 
-  self._private.color = _color or "red"
-  self._private.taste = _taste or "sweet"
-  self._private.has_worm = _has_worm or false
+  self._private.color = color or "red"
+  self._private.taste = taste or "sweet"
+  self._private.has_worm = has_worm or false
   -- "red", "sweet", and false are used as default values
 
   local super_throw_away = self.throw_away
@@ -111,53 +115,3 @@ closure_apple.throw_away()
 
 io.read()
 print(closure_apple.tostring())
-
--- Metatables http://lua-users.org/wiki/MetatableEvents
--- Basic Metatables
-io.read()
-print("Basic Metatables") -- TODO
-
--- Basic Classes using Metatables
-print("Basic Classes using Metatables")
-
-local Fruit = {}
-Fruit.__index = Fruit
-
-local Fruit_mt = {
-  __call = function()
-    local self = {
-      _private = {
-        amount_left_pct = 100
-      }
-    }
-    return setmetatable(self, Fruit)
-  end,
-  __tostring = function(self)
-    print(require 'inspect'.inspect(self))
-    return ""
-    -- return "Amount left: " .. self._private.amount_left_pct
-  end
-}
-
-setmetatable(Fruit, Fruit_mt)
-
-function Fruit:bite(amount_to_bite)
-  self._private.amount_left_pct = self._private.amount_left_pct - amount_to_bite
-end
-
-function Fruit:shove_it_down()
-  self._private.amount_left_pct = 0
-end
-
-function Fruit:throw_away()
-  if self._private.amount_left_pct < 10 then self._private.amount_left_pct = 0 end
-end
-
-function Fruit:amount_left()
-  return self._private.amount_left_pct
-end
-
-local fruit = Fruit()
-
-io.read()
-print(require 'inspect'.insp8tostring(fruit))
