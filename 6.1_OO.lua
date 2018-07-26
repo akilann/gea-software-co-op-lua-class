@@ -1,3 +1,5 @@
+local inspect = require 'inspect'.inspect
+
 -- Metatables http://lua-users.org/wiki/MetatableEvents
 -- Basic Metatables
 io.read()
@@ -20,25 +22,35 @@ local fruits_mt = {
 
 io.read()
 io.write("Strawberry before metatable: ")
-print(fruits["strawberry"])
+print(fruits["strawberry"]) -- nil
 
 io.read()
 print("Fruits iteration before metatable:")
 for fruit,color in pairs(fruits) do
   print(fruit .. ": " .. color)
 end
+--[[
+apple: red
+orange: orange
+banana: yellow
+]]
 
 setmetatable(fruits, fruits_mt)
 
 io.read()
 io.write("Strawberry after metatable: ")
-print(fruits["strawberry"])
+print(fruits["strawberry"]) -- red
 
 io.read()
 print("Fruits iteration after metatable:")
 for fruit,color in pairs(fruits) do
   print(fruit .. ": " .. color)
 end
+--[[
+apple: red
+orange: orange
+banana: yellow
+]]
 
 -- Basic Classes using Metatables
 io.read()
@@ -59,52 +71,52 @@ local Fruit_mt = {
 }
 
 io.read()
-print("Fruit class after __index is set: " .. require 'inspect'.inspect(Fruit))
+print("Fruit class after __index is set: " .. inspect(Fruit))
 
 setmetatable(Fruit, Fruit_mt)
 
 io.read()
-print("Fruit class after setmetatable: " .. require 'inspect'.inspect(Fruit))
+print("Fruit class after setmetatable: " .. inspect(Fruit))
 
 function Fruit.amount_left(self)
   return self._private.amount_left_pct
 end
 
 io.read()
-print("Fruit class after instance method amount_left is set: " .. require 'inspect'.inspect(Fruit))
+print("Fruit class after instance method amount_left is set: " .. inspect(Fruit))
 
 function Fruit:bite(amount_to_bite)
   self._private.amount_left_pct = self._private.amount_left_pct - amount_to_bite
 end
 
 io.read()
-print("Fruit class after instance method bite is set: " .. require 'inspect'.inspect(Fruit))
+print("Fruit class after instance method bite is set: " .. inspect(Fruit))
 
 function Fruit:shove_it_down()
   self._private.amount_left_pct = 0
 end
 
 io.read()
-print("Fruit class after instance method shove_it_down is set: " .. require 'inspect'.inspect(Fruit))
+print("Fruit class after instance method shove_it_down is set: " .. inspect(Fruit))
 
 function Fruit:throw_away()
   if self._private.amount_left_pct < 10 then self._private.amount_left_pct = 0 end
 end
 
 io.read()
-print("Fruit class after instance method throw_away is set: " .. require 'inspect'.inspect(Fruit))
+print("Fruit class after instance method throw_away is set: " .. inspect(Fruit))
 
 function Fruit:__tostring()
   return "Amount Left: " .. self._private.amount_left_pct
 end
 
 io.read()
-print("Fruit class after instance method __tostring is set: " .. require 'inspect'.inspect(Fruit))
+print("Fruit class after instance method __tostring is set: " .. inspect(Fruit))
 
 local fruit = Fruit()
 
 io.read()
-print("fruit instance: " .. require 'inspect'.inspect(fruit))
+print("fruit instance: " .. inspect(fruit))
 
 io.read()
 print(tostring(fruit))
@@ -150,12 +162,12 @@ local Apple_mt = {
 }
 
 io.read()
-print("Apple class after __index is set: " .. require 'inspect'.inspect(Apple))
+print("Apple class after __index is set: " .. inspect(Apple))
 
 setmetatable(Apple, Apple_mt)
 
 io.read()
-print("Apple class after setmetatable: " .. require 'inspect'.inspect(Apple))
+print("Apple class after setmetatable: " .. inspect(Apple))
 
 local super_throw_away = Apple.throw_away
 function Apple:throw_away()
@@ -166,7 +178,7 @@ function Apple:throw_away()
 end
 
 io.read()
-print("Apple class after instance method throw_away is set: " .. require 'inspect'.inspect(Apple))
+print("Apple class after instance method throw_away is set: " .. inspect(Apple))
 
 local super_tostring = Apple.__tostring
 function Apple:__tostring()
@@ -178,12 +190,12 @@ function Apple:__tostring()
 end
 
 io.read()
-print("Apple class after instance method to_string is set: " .. require 'inspect'.inspect(Apple))
+print("Apple class after instance method to_string is set: " .. inspect(Apple))
 
 local apple = Apple()
 
 io.read()
-print(require 'inspect'.inspect(apple))
+print(inspect(apple))
 
 io.read()
 print(tostring(apple))

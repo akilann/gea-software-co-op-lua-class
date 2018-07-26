@@ -1,4 +1,4 @@
-local inspect = require "inspect".inspect
+local inspect = require "inspect".inspect -- LuaRocks
 
 local empty_table = {}
 local array = { 1, 2, 3, 4, "apple" }
