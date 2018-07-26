@@ -5,7 +5,7 @@ function ConcatStrings(stringOne, stringTwo)
     return stringOne .. stringTwo
 end
 
-function Add(numberOne, numberTwo)
+Add = function (numberOne, numberTwo)
     return numberOne + numberTwo
 end
 
