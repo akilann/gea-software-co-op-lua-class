@@ -100,5 +100,5 @@ Gucci Gang
 io.read()
 print("string.reverse")
 
-print(string.reverse("Lil Peep was sleep")) -- peels saw peeP liL
+print(string.reverse("Lil Peep was asleep")) -- peelsa saw peeP liL
 print(string.reverse("racecar")) -- racecar
