@@ -17,7 +17,8 @@ local more_fruits = {
 }
 
 local fruits_mt = {
-  __index = more_fruits
+  __index = more_fruits,
+  __add = function(left, right) return "Fruit salad. Yummy, yummy." end
 }
 
 io.read()
@@ -51,6 +52,10 @@ apple: red
 orange: orange
 banana: yellow
 ]]
+
+io.read()
+print("Add fruits")
+print(fruits + fruits)
 
 -- Basic Classes using Metatables
 io.read()
