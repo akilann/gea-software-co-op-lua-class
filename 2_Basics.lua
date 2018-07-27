@@ -35,25 +35,23 @@ io.read()
 print("\nBooleans")
 
 local tru = true and true -- C: true && true
-print("tru: " .. tostring(tru)) -- tru: true
+print("`tru`: " .. tostring(tru)) -- tru: true
 
 io.read()
 local fals = false or false -- C: true || false
-print("fals: " .. tostring(fals)) -- fals: false
+print("`fals`: " .. tostring(fals)) -- fals: false
 
 io.read()
 local falsey = nil -- C: NULL
-print("not falsey: " .. tostring(not falsey)) -- not falsey: true (C: !falsey <=> Lua: not falsey)
+print("not `falsey`: " .. tostring(not falsey)) -- not falsey: true (C: !falsey <=> Lua: not falsey)
 
 io.read()
-local notequal = falsey
-print("notequal: " .. tostring(true ~= notequal)) -- notequal: true
+local notequal = false
+print("`notequal`: " .. tostring(true ~= notequal)) -- notequal: true
 
 io.read()
-local nil_check = nil or "hello"
-local nil_check2 = "goodbye" or "see ya later"
-print("nil_check: " .. nil_check)
-print("nil_check2: " .. nil_check2)
+local nil_check = nil or {}
+print("`nil_check`: " .. tostring(nil_check))
 
 -- For loops
 io.read()
@@ -133,12 +131,15 @@ local foo = ""
 while #foo <= 5 do
   foo = foo .. "ha"
 end
-print(foo) -- hahaha
+print("`foo`: " .. foo) -- hahaha
 
+io.read()
+print("repeat until loop")
 local bar = ""
 repeat
-  io.write("ha")
-until true -- ha
+  bar = bar .. "ha"
+until bar == "haha" -- ha
+print("`bar`: " .. bar)
 
 io.read()
 print("\nif/elseif/else")

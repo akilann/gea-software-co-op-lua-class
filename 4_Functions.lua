@@ -76,7 +76,6 @@ do
 end
 
 io.read()
-print("`Subtract` cannot outside of local scope.")
 print("Type of `Subtract` outise of local scope: " .. type(Subtract))
 
 -- Example 2: Local versus global scoping of functions

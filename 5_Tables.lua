@@ -2,18 +2,21 @@ local inspect = require "inspect".inspect -- LuaRocks
 
 local empty_table = {}
 local array = { 1, 2, 3, 4, "apple" }
-local keyed_table = { a = 1, b = 2, giraffe = true, "leaves" }
+local keyed_table = { a = 1, b = 2, giraffe = true }
 local mixed_table = { alpha = "a", beta = "b", "c", "d", "e", "f", gamma = "g"}
 local tableception = { keyed_table, array, empty_table }
 
 -- Array
 io.read()
 print("Arrays")
-print(inspect(array)) -- { 1, 2, 3, 4, "apple" }
+print("`array`: " .. inspect(array)) -- { 1, 2, 3, 4, "apple" }
+
+io.read()
+print("`array[1]`: " .. array[1]) -- 1
 
 io.read()
 table.remove(array, 4)
-print(inspect(array)) -- { 1, 2, 3, "apple" }
+print("`array`: " .. inspect(array)) -- { 1, 2, 3, "apple" }
 
 io.read()
 print(array[4]) -- apple
@@ -56,7 +59,6 @@ print("Keyed table")
 print(inspect(keyed_table))
 --[[
 {
-  [1] = "leaves",
   a = 1,
   b = 2,
   giraffe = true
@@ -74,7 +76,6 @@ keyed_table["giraffe"] = nil
 print(inspect(keyed_table))
 --[[
 {
-  [1] = "leaves",
   _valid_key_123 = "I'm a valid_key",
   a = 1,
   b = 2,
@@ -85,12 +86,13 @@ print(inspect(keyed_table))
 }
 ]]
 
-
 local key = "unlock"
 io.read()
 print("local key = \"unlock\"")
 print("[key]: " .. keyed_table[key]) -- [key]: Alohamora
-print(".key: " .. keyed_table.key) -- .key: key
+print(".key: " .. keyed_table.key) -- .key: lock
+io.write("[ghost]: ")
+print(keyed_table["ghost"]) -- [ghost]: nil
 io.write(".ghost: ")
 print(keyed_table.ghost) -- .ghost: nil
 
@@ -156,7 +158,7 @@ print("keyed_table: " .. inspect(empty_table))
 io.read()
 print("keyed_table iteration\n")
 for k,v in pairs(keyed_table) do
-  print_key_value(k,v)
+  print("key: " .. tostring(k) .. " value: " .. tostring(v))
 end
 print("\nend keyed_table iteration\n")
 

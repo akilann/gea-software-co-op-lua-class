@@ -8,6 +8,7 @@ local function Fruit()
     }
   }
 
+
   function self.bite(amount_to_bite)
     self._private.amount_left_pct = self._private.amount_left_pct - amount_to_bite
   end
@@ -48,6 +49,10 @@ io.read()
 fruit.shove_it_down()
 print(fruit.tostring())
 
+io.read()
+fruit.throw_away()
+print(fruit.tostring())
+
 -- Inheritance
 io.read()
 print("Inheritance")
@@ -70,18 +75,18 @@ local function Apple(color, taste, has_worm)
     end
   end
 
-  function self.color(_color)
-    self._private.color = _color or self._private.color
+  function self.color(color)
+    self._private.color = color or self._private.color
     return self._private.color
   end
 
-  function self.taste(_taste)
-    self._private.taste = _taste or self._private.taste
+  function self.taste(taste)
+    self._private.taste = taste or self._private.taste
     return self._private.taste
   end
 
-  function self.has_worm(_has_worm)
-    self._private.has_worm = _has_worm or self._private.has_worm
+  function self.has_worm(has_worm)
+    self._private.has_worm = has_worm or self._private.has_worm
     return self._private.has_worm
   end
 
@@ -103,9 +108,8 @@ local closure_apple = Apple("green", "sour", false)
 io.read()
 print(closure_apple.tostring())
 
-closure_apple.color("green")
-closure_apple.taste("sour")
-closure_apple.has_worm(false)
+closure_apple.color("yellow")
+closure_apple.taste("tart")
 closure_apple.bite(95)
 
 io.read()

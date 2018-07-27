@@ -20,7 +20,8 @@ print("string.byte")
 
 print(string.byte(test_string)) -- 65
 print(string.byte(test_string, 4)) -- 100
-print(string.byte(test_string, 2, 3)) -- 98   99
+print(string.byte(test_string, 2, 4)) -- 98   99   100
+
 local first, second = string.byte(test_string, 1, 2)
 print("First: " .. first .. " and second: " .. second) -- First: 65 and second: 98
 

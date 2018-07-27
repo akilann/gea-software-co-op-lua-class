@@ -16,6 +16,15 @@ typePrinter("`table`", table) -- Type of `table`: table
 typePrinter("`typePrinter`", typePrinter) -- Type of `typePrinter`: function
 
 io.read()
+hex = 0xF1
+float = 1.01
+scientificNotation = 123e-2
+
+print("`hex`: " .. hex) -- Type of `hex`: hex
+print("`float`: " ..float) -- Type of `float`: float
+print("`scientificNotation`: " .. scientificNotation) -- Type of `scientificNotation`: scientificNotation
+
+io.read()
 table = 12345
 typePrinter("redefined `table`", table) -- Type of redefined `table`: number
 

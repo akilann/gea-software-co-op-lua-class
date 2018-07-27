@@ -60,13 +60,13 @@ local Fruit = {}
 Fruit.__index = Fruit
 
 local Fruit_mt = {
-  __call = function()
+  __call = function(cls)
     local self = {
       _private = {
         amount_left_pct = 100
       }
     }
-    return setmetatable(self, Fruit)
+    return setmetatable(self, cls)
   end
 }
 
@@ -122,7 +122,7 @@ io.read()
 print(tostring(fruit))
 
 io.read()
-fruit:bite(10)
+Fruit.bite(fruit, 10)
 print(tostring(fruit))
 
 io.read()
@@ -180,6 +180,30 @@ end
 io.read()
 print("Apple class after instance method throw_away is set: " .. inspect(Apple))
 
+function Apple:color(color)
+  self._private.color = color or self._private.color
+  return self._private.color
+end
+
+io.read()
+print("Apple class after instance method color is set: " .. inspect(Apple))
+
+function Apple:taste(taste)
+  self._private.taste = taste or self._private.taste
+  return self._private.taste
+end
+
+io.read()
+print("Apple class after instance method taste is set: " .. inspect(Apple))
+
+function Apple:has_worm(has_worm)
+  self._private.has_worm = has_worm or self._private.has_worm
+  return self._private.has_worm
+end
+
+io.read()
+print("Apple class after instance method has_worm is set: " .. inspect(Apple))
+
 local super_tostring = Apple.__tostring
 function Apple:__tostring()
   local str = super_tostring(self) .. "\n"
@@ -190,7 +214,7 @@ function Apple:__tostring()
 end
 
 io.read()
-print("Apple class after instance method to_string is set: " .. inspect(Apple))
+print("Apple class after instance method __tostring is set: " .. inspect(Apple))
 
 local apple = Apple()
 
@@ -201,6 +225,8 @@ io.read()
 print(tostring(apple))
 
 io.read()
+apple:color("yellow")
+apple:taste("tart")
 apple:bite(10)
 print(tostring(apple))
 
