@@ -91,7 +91,7 @@ io.read()
 print("local key = \"unlock\"")
 print("[key]: " .. keyed_table[key]) -- [key]: Alohamora
 print(".key: " .. keyed_table.key) -- .key: lock
-io.write("[ghost]: ")
+io.write("[\"ghost\"]: ")
 print(keyed_table["ghost"]) -- [ghost]: nil
 io.write(".ghost: ")
 print(keyed_table.ghost) -- .ghost: nil
@@ -153,7 +153,7 @@ io.read()
 print("pairs")
 
 io.read()
-print("keyed_table: " .. inspect(empty_table))
+print("keyed_table: " .. inspect(keyed_table))
 
 io.read()
 print("keyed_table iteration\n")

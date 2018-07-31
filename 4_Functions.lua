@@ -51,7 +51,7 @@ end
 
 -- Store multiple return values into a variable list equal to the number of values returned
 io.read()
-num1, num2 = Numbers();
+num1, num2 = Numbers()
 print("Value of variables used to store multiple return values: ")
 print("`num1` = " .. num1)
 print("`num2` = " .. num2)
@@ -111,7 +111,7 @@ end
 do
     print("`Divide` before redefinition: " .. Divide(10, 5))
 
-    function Divide(numberOne, numberTwo)
+    function Divide(numberOne)
         return "global `Divide` has been redefined"
     end
 

@@ -1,3 +1,5 @@
+local inspect = require "inspect".inspect
+
 -- Closures
 print("Closure based classes")
 
@@ -7,7 +9,6 @@ local function Fruit()
       amount_left_pct = 100
     }
   }
-
 
   function self.bite(amount_to_bite)
     self._private.amount_left_pct = self._private.amount_left_pct - amount_to_bite
@@ -33,6 +34,9 @@ local function Fruit()
 end
 
 local fruit = Fruit()
+
+io.read()
+print("Fruit instance: " .. inspect(fruit))
 
 io.read()
 print(fruit.tostring())
@@ -104,6 +108,9 @@ local function Apple(color, taste, has_worm)
 end
 
 local closure_apple = Apple("green", "sour", false)
+
+io.read()
+print("Apple instance: " .. inspect(closure_apple))
 
 io.read()
 print(closure_apple.tostring())
