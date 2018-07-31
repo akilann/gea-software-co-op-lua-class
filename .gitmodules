@@ -1,3 +1,0 @@
-[submodule "lib/lua-common"]
-	path = lib/lua-common
-	url = https://github.com/geappliances/applcommon.lua-common

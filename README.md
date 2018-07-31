@@ -1,10 +1,7 @@
 # GEA_Co-op_Lua_Class
 
-All files are fully runnable (after the `inspect` LuaRock is installed).
+All files can be run using the command:
 
-## Inspect
-In order to run the files with `inspect`, the `inspect` LuaRock needs to be installed. To install simply run:
+`lua X_Topic.lua`
 
-`luarocks install inspect`
-  
-LuaRocks must be installed (should be installed if Lua is installed with `lenv` or you are on a GEA Mac).
+where `X_Topic.lua` is the file (i.e. 1_Types.lua).
