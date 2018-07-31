@@ -1,4 +1,4 @@
-local inspect = require "inspect".inspect -- LuaRocks
+local inspect = require "lib.inspect.inspect".inspect -- LuaRocks
 
 local empty_table = {}
 local array = { 1, 2, 3, 4, "apple" }
@@ -104,22 +104,22 @@ print(inspect(mixed_table))
 io.read()
 -- c is thrown away since the array index that it is assigned to is overwritten by the preceding array entries
 mixed_table = { alpha = "a", beta = "b", [1] = "c", "d", "e", "f", gamma = "g"}
-print(inspect(mixed_table))
+print("`c` initialized in position 1: " .. inspect(mixed_table))
 io.read()
 mixed_table = { alpha = "a", beta = "b", [2] = "c", "d", "e", "f", gamma = "g"}
-print(inspect(mixed_table))
+print("`c` initialized in position 2: " .. inspect(mixed_table))
 io.read()
 mixed_table = { alpha = "a", beta = "b", [3] = "c", "d", "e", "f", gamma = "g"}
-print(inspect(mixed_table))
+print("`c` initialized in position 3: " .. inspect(mixed_table))
 io.read()
 -- c will be in the table since it is outside the range of array indices
 mixed_table = { alpha = "a", beta = "b", [4] = "c", "d", "e", "f", gamma = "g"}
-print(inspect(mixed_table))
+print("`c` initialized in position 4: " .. inspect(mixed_table))
 io.read()
 -- Overwrite memory at index 1. This will not model behavior above since the change is not at initialization
 mixed_table = { alpha = "a", beta = "b", "c", "d", "e", "f", gamma = "g"}
 mixed_table[1] = "a"
-print(inspect(mixed_table))
+print("`a` added to table after initialization in position 1: " .. inspect(mixed_table))
 io.read()
 
 -- Iterating through arrays and tables
@@ -127,7 +127,7 @@ io.read()
 print("Iteration")
 
 io.read()
-print("ipairs\n")
+print("ipairs")
 
 io.read()
 print("empty_table: " .. inspect(empty_table))
@@ -137,7 +137,7 @@ print("empty_table iteration\n")
 for i,v in ipairs(empty_table) do
   print("index: " .. i .. " value: " .. v)
 end
-print("\nend empty_table iteration\n")
+print("\nend empty_table iteration")
 
 io.read()
 print("array: " .. inspect(array))
@@ -147,7 +147,7 @@ print("array iteration\n")
 for i,v in ipairs(array) do
   print("index: " .. i .. " value: " .. v)
 end
-print("\nend array iteration\n")
+print("\nend array iteration")
 
 io.read()
 print("pairs")
@@ -160,7 +160,7 @@ print("keyed_table iteration\n")
 for k,v in pairs(keyed_table) do
   print("key: " .. tostring(k) .. " value: " .. tostring(v))
 end
-print("\nend keyed_table iteration\n")
+print("\nend keyed_table iteration")
 
 io.read()
 print("array: " .. inspect(array))
@@ -170,4 +170,4 @@ print("array iteration\n")
 for i,v in pairs(array) do
   print("index: " .. i .. " value: " .. v)
 end
-print("\nend array iteration\n")
+print("\nend array iteration")

@@ -1,4 +1,4 @@
-local inspect = require "inspect".inspect
+local inspect = require "lib.inspect.inspect".inspect
 
 -- Closures
 print("Closure based classes")
