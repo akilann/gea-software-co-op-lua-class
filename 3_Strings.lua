@@ -33,6 +33,7 @@ print(string.char(97, 98, 99, 100, 101, 102)) -- "abcdef"
 io.read()
 print("string.find")
 
+--    index:   1 3                           32 34
 test_string = "the quick brown fox jumps over the lazy dog"
 
 print(string.find(test_string, "the")) -- 1   3
@@ -69,9 +70,12 @@ print("string.len")
 print(test_string .. " is " .. string.len(test_string) .. " characters long.") -- The Ohio State University is 25 characters long.
 
 io.read()
-print("string.upper and string.lower")
+print("string.upper")
 
 print(string.upper(test_string)) -- THE OHIO STATE UNIVERSITY
+
+print("string.lower")
+
 print(string.lower(test_string)) -- the ohio state university
 
 io.read()
@@ -101,5 +105,5 @@ Gucci Gang
 io.read()
 print("string.reverse")
 
-print(string.reverse("Lil Peep was asleep")) -- peelsa saw peeP liL
-print(string.reverse("racecar")) -- racecar
+print(string.reverse("Murder for a jar of red rum.")) -- .mur der fo raj a rof redruM
+print(string.reverse("malayalam")) -- malayalam
